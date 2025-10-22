@@ -9,16 +9,17 @@
 // ==/UserScript==
 
 (function() {
-  // run an infinite loop until the owop object loads
-  while(!OWOP);
+  function init() {
+    OWOP.chat.local("hi");
+    // 23 means a player joined
+    OWOP.on(23, (player) => {
+      OWOP.chat.local(player.id + " has joined");
+    });
 
-  OWOP.chat.local("hi");
-  // 23 means a player joined
-  OWOP.on(23, (player) => {
-    OWOP.chat.local(player.id + " has joined");
-  });
+    OWOP.on(22, (player) => {
+      OWOP.chat.local(player.id + " has left");
+    });
+  }
 
-  OWOP.on(22, (player) => {
-    OWOP.chat.local(player.id + " has left");
-  });
+  window.onload = init;
 })();
