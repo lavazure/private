@@ -12,6 +12,7 @@
   // run an infinite loop until the owop object loads
   while(!OWOP);
 
+  OWOP.chat.local("hi");
   // 23 means a player joined
   OWOP.on(23, (player) => {
     OWOP.chat.local(player.id + " has joined");
